@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,11 +17,11 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Singleton
+@Stateless
 public class ContactDAO implements ContactDAOLocal, ContactDAORemote {
 
-    @Resource(lookup = "java:global/ContactsInMem") // pour SGBD embarqué (H2)
-//    @Resource(lookup = "jdbc/ContactsDS")  // pour SGBD externe
+//    @Resource(lookup = "java:global/ContactsInMem") // pour SGBD embarqué (H2)
+    @Resource(lookup = "jdbc/ContactsDS")  // pour SGBD externe
     private DataSource dataSource;
 
     /**
