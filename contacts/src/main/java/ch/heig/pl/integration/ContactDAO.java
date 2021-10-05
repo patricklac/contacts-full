@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 @Stateless
 public class ContactDAO implements ContactDAOLocal, ContactDAORemote {
 
-//    @Resource(lookup = "java:global/ContactsInMem") // pour SGBD embarqué (H2)
-    @Resource(lookup = "jdbc/ContactsDS")  // pour SGBD externe
+    @Resource(lookup = "java:global/ContactsInMem") // pour SGBD embarqué (H2)
+//    @Resource(lookup = "jdbc/ContactsDS")  // pour SGBD externe
     private DataSource dataSource;
 
     /**

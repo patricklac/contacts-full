@@ -2,6 +2,7 @@ package ch.heig.pl.business;
 
 import ch.heig.pl.integration.ContactDAOLocal;
 import ch.heig.pl.model.Contact;
+import ch.heig.pl.dto.CoupleDTO;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -44,5 +45,19 @@ public class ContactService {
             }
         }
         return contactsInCouple;
+    }
+
+    public List<CoupleDTO> getCouples() {
+        List<Contact> contacts = contactDAO.getContacts();
+        List<CoupleDTO> couples = new ArrayList<>();
+        Set<Contact> contactsInCouple = new HashSet<>();
+        for (Contact contact : contacts) {
+            Contact contact2 = contact.getConjoint();
+            if (contact2 != null && !contactsInCouple.contains(contact2)) {
+                contactsInCouple.add(contact);
+                couples.add(new CoupleDTO(contact.getNom(),contact2.getNom()));
+            }
+        }
+        return couples;
     }
 }
