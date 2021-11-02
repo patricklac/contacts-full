@@ -10,10 +10,5 @@
         <module name="contacts" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="contacts" target="11" />
-      <module name="contacts-full" target="11" />
-      <module name="contacts-init" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
